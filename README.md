@@ -76,3 +76,13 @@ lm_lasso_cv.fit(X_train, y_train)
 print ("r^2 de lineal:", lm.score(X, y))
 print ("r^2 de ridge:", lm_ridge_cv.score(X, y))
 print ("r^2 de lasso:", lm_lasso_cv.score(X, y))
+
+# Ahora predecimos a partir de los datos de X_test
+y_pred_ridge = lm_ridge_cv.predict(X_test)
+
+# Creo un porfolio con una muestra de X_test
+porfolio = X_test.sample(n = 100, random_state = 100)
+porfolio.head()
+
+# Obtengo las predicciones del porfolio
+y_pred_ridge = lm_ridge_cv.predict(porfolio)
